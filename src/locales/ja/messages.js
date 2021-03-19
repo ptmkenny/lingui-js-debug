@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"Tab 2":"Tab 2"}};

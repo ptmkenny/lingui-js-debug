@@ -33,9 +33,19 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* i18n */
+import { i18n } from '@lingui/core';
+import { I18nProvider } from '@lingui/react';
+import { messages } from './locales/en/messages';
+import {Trans} from "@lingui/macro";
+
+i18n.load('en', messages);
+i18n.activate('en');
+
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+<I18nProvider i18n={i18n}>
+<IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/tab1">
@@ -58,7 +68,7 @@ const App: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel><Trans>Tab 2</Trans></IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
@@ -67,7 +77,8 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
-  </IonApp>
+</I18nProvider>
+</IonApp>
 );
 
 export default App;
